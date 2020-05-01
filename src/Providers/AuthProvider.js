@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-export default (baseUrl) => {
+import { baseUrl } from '../General/Constants';
+
+export default () => {
     return {
         login: async (params) => {
             const url = `${baseUrl}/admin/auth/token`;
