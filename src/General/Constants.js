@@ -1,1 +1,1 @@
-export const baseUrl = 'http://localhost:3333';
+export const baseUrl = 'https://devquiz-backend.herokuapp.com';
