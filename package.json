@@ -11,6 +11,7 @@
     "ra-data-json-server": "^3.4.3",
     "react": "^16.13.1",
     "react-admin": "^3.4.3",
+    "react-animated-number": "^0.4.4",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "socket.io-client": "^2.3.0"

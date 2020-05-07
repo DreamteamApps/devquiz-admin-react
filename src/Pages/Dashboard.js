@@ -6,6 +6,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { Grid, Paper, Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
+import AnimatedNumber from 'react-animated-number';
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -19,7 +21,9 @@ const useStyles = makeStyles((theme) => ({
     counter: {
         fontSize: 20,
         fontWeight: 700,
-        color: 'black'
+        color: 'black',
+        transition: '0.8s ease-out',
+        transitionProperty:'background-color, color, opacity'
     },
     counterTitle: {
         fontSize: 22
@@ -32,11 +36,6 @@ const Dashboard = (props) => {
 
     const statistics = useSelector(state => state.statistics);
 
-    useEffect(() => {
-        console.log(statistics);
-
-    }, [statistics]);
-
     return (
         <div className={classes.root}>
             <Grid container spacing={3}>
@@ -45,11 +44,23 @@ const Dashboard = (props) => {
                         <h3>Players</h3>
                         <Box display="flex" flexDirection="row">
                             <Box flexGrow={1}>
-                                <div className={classes.counter}>{statistics.totalPlayersNow}</div>
+                                <AnimatedNumber component="text"
+                                    value={statistics.totalPlayersNow}
+                                    className={classes.counter}
+                                    duration={1000}
+                                    formatValue={n => {
+                                        return Number.parseInt(n).toFixed(0);
+                                    }} />
                                 <div className={classes.counterTitle}>online</div>
                             </Box>
                             <Box flexGrow={1} >
-                                <div className={classes.counter}>{statistics.totalPlayers}</div>
+                                <AnimatedNumber component="text"
+                                    value={statistics.totalPlayers}
+                                    className={classes.counter}
+                                    duration={1000}
+                                    formatValue={n => {
+                                        return Number.parseInt(n).toFixed(0);
+                                    }} />
                                 <div className={classes.counterTitle}>total</div>
                             </Box>
                         </Box>
@@ -60,11 +71,23 @@ const Dashboard = (props) => {
                         <h3>Matches</h3>
                         <Box display="flex" flexDirection="row">
                             <Box flexGrow={1}>
-                                <div className={classes.counter}>{statistics.totalMatchesNow}</div>
+                                <AnimatedNumber component="text"
+                                    value={statistics.totalMatchesNow}
+                                    className={classes.counter}
+                                    duration={1000}
+                                    formatValue={n => {
+                                        return Number.parseInt(n).toFixed(0);
+                                    }} />
                                 <div className={classes.counterTitle}>now</div>
                             </Box>
                             <Box flexGrow={1} >
-                                <div className={classes.counter}>{statistics.totalMatches}</div>
+                                <AnimatedNumber component="text"
+                                    value={statistics.totalMatches}
+                                    className={classes.counter}
+                                    duration={1000}
+                                    formatValue={n => {
+                                        return Number.parseInt(n).toFixed(0);
+                                    }} />
                                 <div className={classes.counterTitle}>total</div>
                             </Box>
                         </Box>
@@ -75,11 +98,23 @@ const Dashboard = (props) => {
                         <h3>Questions</h3>
                         <Box display="flex" flexDirection="row">
                             <Box flexGrow={1}>
-                                <div className={classes.counter}>{statistics.totalAnswered}</div>
+                                <AnimatedNumber component="text"
+                                    value={statistics.totalAnswered}
+                                    className={classes.counter}
+                                    duration={1000}
+                                    formatValue={n => {
+                                        return Number.parseInt(n).toFixed(0);
+                                    }} />
                                 <div className={classes.counterTitle}>answered</div>
                             </Box>
                             <Box flexGrow={1}>
-                                <div className={classes.counter}>{statistics.totalQuestions}</div>
+                            <AnimatedNumber component="text"
+                                    value={statistics.totalQuestions}
+                                    className={classes.counter}
+                                    duration={1000}
+                                    formatValue={n => {
+                                        return Number.parseInt(n).toFixed(0);
+                                    }} />
                                 <div className={classes.counterTitle}>total</div>
                             </Box>
                         </Box>
@@ -123,7 +158,7 @@ const Dashboard = (props) => {
                                 <TableBody>
                                     {statistics.top10PlayersByWin.map((player, i) => (
                                         <TableRow key={player.id}>
-                                            <TableCell align="center">{`#${i+1}`}</TableCell>
+                                            <TableCell align="center">{`#${i + 1}`}</TableCell>
                                             <TableCell align="center">
                                                 <Box>
                                                     <img src={player.image_url} height={30} />
