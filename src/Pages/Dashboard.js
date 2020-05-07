@@ -92,12 +92,14 @@ const Dashboard = (props) => {
                             {statistics.recentPlayers.map((player) => {
                                 return (
                                     <Grid key={player.id} item xs={4}>
-                                        <Box>
-                                            <img src={player.avatar} height={30} />
-                                        </Box>
-                                        <Box>
-                                            {`@${player.name}`}
-                                        </Box>
+                                        <a href={`https://github.com/${player.name}`} target={'blank'}>
+                                            <Box>
+                                                <img src={player.avatar} height={30} />
+                                            </Box>
+                                            <Box>
+                                                {`@${player.name}`}
+                                            </Box>
+                                        </a>
                                     </Grid>
                                 )
                             })}
@@ -111,25 +113,28 @@ const Dashboard = (props) => {
                             <Table className={classes.table} aria-label="simple table">
                                 <TableHead>
                                     <TableRow>
-                                        <TableCell>Position</TableCell>
-                                        <TableCell align="right">Avatar</TableCell>
-                                        <TableCell align="right">Name</TableCell>
-                                        <TableCell align="right">Github</TableCell>
-                                        <TableCell align="right">Wins</TableCell>
-                                        <TableCell align="right">Ties</TableCell>
-                                        <TableCell align="right">Losses</TableCell>
+                                        <TableCell align="center"></TableCell>
+                                        <TableCell align="center">Github</TableCell>
+                                        <TableCell align="center">Wins</TableCell>
+                                        <TableCell align="center">Ties</TableCell>
+                                        <TableCell align="center">Losses</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
                                     {statistics.top10PlayersByWin.map((player, i) => (
                                         <TableRow key={player.id}>
-                                            <TableCell align="right">{`#${i}`}</TableCell>
-                                            <TableCell align="right"><img src={player.avatar} height={30}/></TableCell>
-                                            <TableCell component="th" scope="row">{player.name}</TableCell>
-                                            <TableCell align="right">{player.username}</TableCell>
-                                            <TableCell align="right">{player.wins}</TableCell>
-                                            <TableCell align="right">{player.ties}</TableCell>
-                                            <TableCell align="right">{player.losses}</TableCell>
+                                            <TableCell align="center">{`#${i+1}`}</TableCell>
+                                            <TableCell align="center">
+                                                <Box>
+                                                    <img src={player.image_url} height={30} />
+                                                </Box>
+                                                <Box>
+                                                    {`@${player.username}`}
+                                                </Box>
+                                            </TableCell>
+                                            <TableCell align="center">{player.wins}</TableCell>
+                                            <TableCell align="center">{player.ties}</TableCell>
+                                            <TableCell align="center">{player.losses}</TableCell>
                                         </TableRow>
                                     ))}
                                 </TableBody>
