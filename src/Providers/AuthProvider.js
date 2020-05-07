@@ -29,7 +29,9 @@ export default () => {
         checkAuth: async () => { 
             const token = localStorage.getItem('token');
             if(!token) {
-                throw "";
+                throw {
+                    message: "You need to login again!"
+                };
             }
         },
         checkError: error => Promise.resolve(),
