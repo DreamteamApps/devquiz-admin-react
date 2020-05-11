@@ -161,10 +161,10 @@ const Dashboard = (props) => {
                                             <TableCell align="center">{`#${i + 1}`}</TableCell>
                                             <TableCell align="center">
                                                 <Box>
-                                                    <img src={player.image_url} height={30} />
+                                                    <img src={player.avatar} height={30} />
                                                 </Box>
                                                 <Box>
-                                                    {`@${player.username}`}
+                                                    {`@${player.name}`}
                                                 </Box>
                                             </TableCell>
                                             <TableCell align="center">{player.wins}</TableCell>
